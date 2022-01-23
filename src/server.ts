@@ -3,6 +3,7 @@ import config from 'config'
 import connect from "./utils/connect";
 import logger from "./utils/logger";
 import routes from "./routes";
+import exp from "constants";
 
 const PORT = config.get<number>('port')
 const app = express()
@@ -18,6 +19,8 @@ const app = express()
 // // console.log( `✔ Port: ${PORT}` );
 //
 // app.get('/', (req, res) => res.send('Hello World!'))
+app.use(express.json())
+
 app.listen(PORT, async () => {
     logger.info(`App listening on port ${PORT}! Direct url : http://localhost:${PORT}/`)
 

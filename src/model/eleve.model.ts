@@ -1,15 +1,17 @@
-import {Schema, Document, model} from "mongoose";
+import mongoose from "mongoose";
 
-interface Eleve {
-    _id: string;
+export interface EleveDocument extends mongoose.Document {
     nom: string;
     prenom: string;
 }
 
-const schema = new Schema<Eleve>({
-    _id: { type: String, required: true },
-    nom: { type: String, required: true },
-    prenom: { type: String, required: true }
-});
+const EleveSchema: mongoose.Schema = new mongoose.Schema({
+    nom: {type: String, required: true},
+    prenom: {type: String, required: true}
+}, {
+    timestamps: true
+})
 
-const EleveModel = model<Eleve>('Eleve', schema);
+const EleveModel = mongoose.model("Eleve", EleveSchema);
+
+export default EleveModel;

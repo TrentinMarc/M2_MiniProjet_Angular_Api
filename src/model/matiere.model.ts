@@ -1,16 +1,17 @@
-import {Schema, Document, model} from "mongoose";
+import mongoose from "mongoose";
 
-interface Matiere {
-    _id: string;
+export interface MatiereDocument extends mongoose.Document {
     libelle: string;
     picLink: string;
 }
 
-const schema = new Schema<Matiere>({
-    _id: {type: String, required: true},
+const MatiereSchema: mongoose.Schema = new mongoose.Schema({
     libelle: {type: String, required: true},
-    picLink: {type: String, required: false}
-});
+    picLink: {type: String, required: true}
+}, {
+    timestamps: true
+})
 
-const MatiereModel = model<Matiere>('Matiere', schema);
+const MatiereModel = mongoose.model<MatiereDocument>("Matiere", MatiereSchema);
 
+export default MatiereModel;

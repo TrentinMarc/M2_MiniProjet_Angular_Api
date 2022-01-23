@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 export interface AssignmentDocument extends mongoose.Document {
-    _id: string;
     nom: string;
     dateDeRendu: Date;
     rendu: boolean;
@@ -13,14 +12,13 @@ export interface AssignmentDocument extends mongoose.Document {
 }
 
 const AssignmentSchema: mongoose.Schema = new mongoose.Schema({
-    _id: {type: String, required: true, unique: true},
     nom: {type: String, required: true},
     dateDeRendu: {type: Date, required: true},
-    rendu: {type: Boolean, required: true, default: false},
-    id: {type: Number, required: true},
+    rendu: {type: Boolean, default: false},
+    id: {type: Number},
     auteur: {type: String, required: true},
     matiere: {type: String, required: true},
-    note: {type: Number, required: true},
+    note: {type: Number},
     remarques: {type: String}
 }, {
     timestamps: true
