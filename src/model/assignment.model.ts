@@ -1,12 +1,14 @@
 import mongoose from "mongoose";
+import {EleveDocument} from "./eleve.model";
+import {MatiereDocument} from "./matiere.model";
 
 export interface AssignmentDocument extends mongoose.Document {
     nom: string;
     dateDeRendu: Date;
     rendu: boolean;
     id: number;
-    auteur: string;
-    matiere: string;
+    auteur: EleveDocument['_id'];
+    matiere: MatiereDocument['_id'];
     note: number;
     remarques: string;
 }
@@ -16,8 +18,8 @@ const AssignmentSchema: mongoose.Schema = new mongoose.Schema({
     dateDeRendu: {type: Date, required: true},
     rendu: {type: Boolean, default: false},
     id: {type: Number},
-    auteur: {type: String, required: true},
-    matiere: {type: String, required: true},
+    auteur: {type: mongoose.Schema.Types.ObjectId, required: true, ref: "Eleve"},
+    matiere: {type: mongoose.Schema.Types.ObjectId, required: true, ref: "Matiere"},
     note: {type: Number},
     remarques: {type: String}
 }, {

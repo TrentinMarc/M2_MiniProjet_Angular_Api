@@ -1,5 +1,5 @@
-const mongoose = require( 'mongoose' ),
-    config = require( './config' ).getConfig();
+const mongoose = require('mongoose'),
+    config = require('./config').getConfig();
 
 // Mongo Connection Class
 class Connection {
@@ -12,18 +12,18 @@ class Connection {
         // mongoose.set( 'useFindAndModify', false );
         // mongoose.set( 'useCreateIndex', true );
         // mongoose.set( 'useUnifiedTopology', true );
-        this.connect( url ).then( () => {
-            console.log( '✔ Database Connected' );
-        } ).catch( ( err ) => {
-            console.error( '✘ MONGODB ERROR: ', err.message );
-        } );
+        this.connect(url).then(() => {
+            console.log('✔ Database Connected');
+        }).catch((err) => {
+            console.error('✘ MONGODB ERROR: ', err.message);
+        });
 
     }
 
-    async connect( url ) {
+    async connect(url) {
         try {
-            await mongoose.connect( url );
-        } catch ( e ) {
+            await mongoose.connect(url);
+        } catch (e) {
             throw e;
         }
     }

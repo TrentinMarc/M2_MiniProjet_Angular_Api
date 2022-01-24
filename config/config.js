@@ -1,4 +1,4 @@
-const path = require( 'path' );
+const path = require('path');
 
 const config = {
     'MODE': 'Development',
@@ -9,7 +9,7 @@ const config = {
 };
 
 // Modify for Production
-if ( process.env.NODE_ENV === 'production' ) {
+if (process.env.NODE_ENV === 'production') {
     config.MODE = 'Production';
 }
 

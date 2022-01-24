@@ -1,20 +1,46 @@
 import {Express, Request, Response} from 'express'
-import {createAssignmentHandler} from "./controller/assignment.controller";
+import {
+    createAssignmentHandler, deleteOneAssignmentHandler,
+    getAllAssignmentHandler,
+    getAssignmentHandler
+} from "./controller/assignment.controller";
 import validateRessource from "./middleware/validateRessource";
-import { createAssignmentSchema } from "./schema/assignment.schema";
-import { createMatiereSchema } from "./schema/matiere.schema";
-import { createMatiereHandler } from "./controller/matiere.controller";
-import { createEleveSchema } from "./schema/eleve.schema";
-import { createEleveHandler } from "./controller/eleve.controller";
+import {createAssignmentSchema, deleteAssignmentSchema, getAssignmentSchema} from "./schema/assignment.schema";
+import {createMatiereSchema, deleteMatiereSchema, getMatiereSchema} from "./schema/matiere.schema";
+import {
+    createMatiereHandler,
+    deleteOneMatiereHandler,
+    getAllMatiereHandler,
+    getMatiereHandler
+} from "./controller/matiere.controller";
+import {createEleveSchema, deleteEleveSchema, getEleveSchema} from "./schema/eleve.schema";
+import {
+    createEleveHandler,
+    deleteOneEleveHandler,
+    getAllEleveHandler,
+    getEleveHandler
+} from "./controller/eleve.controller";
 
 function routes(app: Express) {
     app.get('/healthcheck', (req: Request, res: Response) => res.sendStatus(200));
 
-    app.post('/api/assignment', validateRessource(createAssignmentSchema),createAssignmentHandler) //41.26
+    // Assignment
+    app.post('/api/assignment', validateRessource(createAssignmentSchema), createAssignmentHandler); //41.26
+    app.get('/api/assignment', getAllAssignmentHandler);
+    app.get('/api/assignment/:assignmentId', validateRessource(getAssignmentSchema), getAssignmentHandler)
+    app.delete('/api/assignment/:assignmentId', validateRessource(deleteAssignmentSchema), deleteOneAssignmentHandler)
 
-    app.post('/api/matiere', validateRessource(createMatiereSchema), createMatiereHandler)
+    // Matiere
+    app.post('/api/matiere', validateRessource(createMatiereSchema), createMatiereHandler);
+    app.get('/api/matiere', getAllMatiereHandler)
+    app.get('/api/matiere/:matiereId', validateRessource(getMatiereSchema), getMatiereHandler)
+    app.delete('/api/matiere/:matiereId', validateRessource(deleteMatiereSchema), deleteOneMatiereHandler)
 
-    app.post('/api/eleve', validateRessource(createEleveSchema), createEleveHandler)
+    // Eleve
+    app.post('/api/eleve', validateRessource(createEleveSchema), createEleveHandler);
+    app.get('/api/eleve', getAllEleveHandler);
+    app.get('/api/eleve/:eleveId', validateRessource(getEleveSchema), getEleveHandler)
+    app.delete('/api/eleve/:eleveId', validateRessource(deleteEleveSchema), deleteOneEleveHandler)
 }
 
 export default routes;
