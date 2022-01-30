@@ -8,7 +8,7 @@ import config from "../config/config";
 const PORT = Number(config.server.port);
 const app = express()
 
-const allowedOrigins = [config.server.frontUrl]
+const allowedOrigins = ['*']
 
 const options: cors.CorsOptions = {
     origin: allowedOrigins
