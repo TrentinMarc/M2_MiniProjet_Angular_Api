@@ -10,18 +10,29 @@ const app = express()
 
 const allowedOrigins = ['*']
 
-const options: cors.CorsOptions = {
-    origin: allowedOrigins,
-    methods: 'GET, POST, DELETE'
-}
+// const options: cors.CorsOptions = {
+//     origin: allowedOrigins,
+//     methods: 'GET, POST, DELETE'
+// }
 const NAMESPACE = "Server";
 app.use(express.json())
 // app.use(cors(options))
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", '*');
-    res.header("Access-Control-Allow-Credentials", 'true');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+
+    // Pass to next layer of middleware
     next();
 });
 app.listen(PORT, async () => {
