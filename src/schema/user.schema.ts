@@ -17,7 +17,6 @@ const payload = {
         }).min(6, 'Le mot de passe doit contenir 6 caractères minimum')
     })
 }
-
 const params = {
     params: object({
         userId: string({
@@ -50,9 +49,12 @@ export  const deleteUserSchema = object({
 export const loginUserSchema = object({
     ...loginPayload
 })
+
+export const getSizeSchema = object({});
 export const getAllUserSchema = object({});
 export type LoginUserInput = TypeOf<typeof loginUserSchema>
 export type CreateUserInput = TypeOf<typeof createUserSchema>
 export type GetUserInput = TypeOf<typeof getUserSchema>
 export type DeleteUserInput = TypeOf<typeof deleteUserSchema>
 export type GetAllUserInput = TypeOf<typeof getAllUserSchema>
+export type GetSizeInput = TypeOf<typeof getSizeSchema>

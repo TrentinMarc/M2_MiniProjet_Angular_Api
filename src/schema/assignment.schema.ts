@@ -29,6 +29,17 @@ const params = {
 
     })
 }
+
+const getAllParams = {
+    params: object({
+        limit: number({
+            required_error: "Limite obligatoire"
+        }),
+        page: number({
+            required_error: 'Numéro de page obligatoire'
+        })
+    })
+}
 export const createAssignmentSchema = object({
     ...payload
 })

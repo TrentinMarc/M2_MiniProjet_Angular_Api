@@ -4,7 +4,7 @@ import {MatiereDocument} from "./matiere.model";
 
 export interface AssignmentDocument extends mongoose.Document {
     nom: string;
-    dateDeRendu: Date;
+    dateDeRendu: string;
     rendu: boolean;
     auteur: EleveDocument['_id'];
     matiere: MatiereDocument['_id'];
@@ -14,7 +14,7 @@ export interface AssignmentDocument extends mongoose.Document {
 
 const AssignmentSchema: mongoose.Schema = new mongoose.Schema({
     nom: {type: String, required: true},
-    dateDeRendu: {type: Date, required: true},
+    dateDeRendu: {type: String, required: true},
     rendu: {type: Boolean, default: false},
     auteur: {type: mongoose.Schema.Types.ObjectId, required: true, ref: "Eleve"},
     matiere: {type: mongoose.Schema.Types.ObjectId, required: true, ref: "Matiere"},

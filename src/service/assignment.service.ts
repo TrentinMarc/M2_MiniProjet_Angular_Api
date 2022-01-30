@@ -9,9 +9,20 @@ export async function createAssignment(input: DocumentDefinition<AssignmentDocum
     }
 }
 
-export async function getAllAssignment() {
+export async function getAllAssignment(limit: number, page: number) {
     try {
-        return await AssignmentModel.find()
+        return await AssignmentModel
+            .find()
+            .limit(limit)
+            .skip(limit * page);
+    } catch (e: any) {
+        throw new Error(e)
+    }
+}
+
+export async function getSize() {
+    try {
+        return await AssignmentModel.count({});
     } catch (e: any) {
         throw new Error(e)
     }
