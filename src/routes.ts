@@ -20,6 +20,9 @@ import {
     getAllEleveHandler,
     getEleveHandler
 } from "./controller/eleve.controller";
+import {createUserSchema, getUserSchema, loginUserSchema} from "./schema/user.schema";
+import {createUserHandler, getAllUserHandler, getUserHandler, loginUserHandler} from "./controller/user.controller";
+import extractJWT from "./middleware/extractJWT";
 
 function routes(app: Express) {
     app.get('/healthcheck', (req: Request, res: Response) => res.sendStatus(200));
@@ -41,6 +44,11 @@ function routes(app: Express) {
     app.get('/api/eleve', getAllEleveHandler);
     app.get('/api/eleve/:eleveId', validateRessource(getEleveSchema), getEleveHandler)
     app.delete('/api/eleve/:eleveId', validateRessource(deleteEleveSchema), deleteOneEleveHandler)
+
+    // User
+    app.get('/api/user', extractJWT, getAllUserHandler)
+    app.post('/api/user', validateRessource(createUserSchema), createUserHandler)
+    app.post('/api/user/login', validateRessource(loginUserSchema), loginUserHandler)
 }
 
 export default routes;

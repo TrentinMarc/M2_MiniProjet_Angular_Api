@@ -6,7 +6,6 @@ export interface AssignmentDocument extends mongoose.Document {
     nom: string;
     dateDeRendu: Date;
     rendu: boolean;
-    id: number;
     auteur: EleveDocument['_id'];
     matiere: MatiereDocument['_id'];
     note: number;
@@ -17,7 +16,6 @@ const AssignmentSchema: mongoose.Schema = new mongoose.Schema({
     nom: {type: String, required: true},
     dateDeRendu: {type: Date, required: true},
     rendu: {type: Boolean, default: false},
-    id: {type: Number},
     auteur: {type: mongoose.Schema.Types.ObjectId, required: true, ref: "Eleve"},
     matiere: {type: mongoose.Schema.Types.ObjectId, required: true, ref: "Matiere"},
     note: {type: Number},

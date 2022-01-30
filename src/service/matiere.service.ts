@@ -1,5 +1,8 @@
 import {DocumentDefinition, FilterQuery, QueryOptions} from "mongoose";
 import MatiereModel, {MatiereDocument} from "../model/matiere.model";
+import {util} from "zod/lib/helpers/util";
+import Omit = util.Omit;
+
 
 export async function createMatiere(input: DocumentDefinition<MatiereDocument>) {
     try {
