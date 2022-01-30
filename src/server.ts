@@ -3,7 +3,6 @@ import connect from "./utils/connect";
 import logger from "./utils/logger";
 import routes from "./routes";
 import cors from 'cors';
-import exp from "constants";
 import config from "../config/config";
 
 const PORT = Number(config.server.port);

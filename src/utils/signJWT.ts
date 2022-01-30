@@ -3,9 +3,9 @@ import logger from "./logger";
 import jwt from "jsonwebtoken";
 import {UserDocument} from "../model/user.model";
 const signJWT = (user: UserDocument, callback: (error: Error | null, token: string | null) => void): void => {
-    let timeSinceEpoch = new Date().getTime();
-    let expirationTime = timeSinceEpoch + Number(config.server.jwt_expiretime) * 100000;
-    let expirationTimeInSeconds = Math.floor(expirationTime / 1000);
+    const timeSinceEpoch = new Date().getTime();
+    const expirationTime = timeSinceEpoch + Number(config.server.jwt_expiretime) * 100000;
+    const expirationTimeInSeconds = Math.floor(expirationTime / 1000);
 
     logger.info(`Attempting to sign token for ${user.email}`);
 

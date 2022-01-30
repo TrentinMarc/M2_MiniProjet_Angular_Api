@@ -12,7 +12,7 @@ export async function createUserHandler(req: Request<{}, {}, CreateUserInput["bo
         return res.send(user)
     } catch (e) {
         logger.error(e);
-        if (e.code == 11000) {
+        if (e.code === 11000) {
             return res.status(409).send({errorMessage: "Cet email est déjà utilisé"})
         }
         return res.status(409).send({errorMessage: e.message});
@@ -69,7 +69,7 @@ export async function loginUserHandler(req: Request<{}, {}, LoginUserInput['body
             }else if(token){
                 res.status(200).json({
                     message: "Connexion réussie",
-                    token: token,
+                    token,
                     user: omit(user, "mdp", "createdAt", "updatedAt")
                 })
             }

@@ -29,7 +29,7 @@ function routes(app: Express) {
 
     // Assignment
     app.get('/api/assignment/size', validateRessource(getSizeSchema), getSizeHandler)
-    app.post('/api/assignment', validateRessource(createAssignmentSchema), createAssignmentHandler); //41.26
+    app.post('/api/assignment', validateRessource(createAssignmentSchema), createAssignmentHandler); // 41.26
     app.get('/api/assignment/all/:limit/:page', getAllAssignmentHandler);
     app.get('/api/assignment/:assignmentId', validateRessource(getAssignmentSchema), getAssignmentHandler)
     app.delete('/api/assignment/:assignmentId', validateRessource(deleteAssignmentSchema), deleteOneAssignmentHandler)

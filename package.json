@@ -4,12 +4,12 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
-    "build": "tsc",
     "prestart": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "start": "node src/server.ts"
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "build": "tsc",
+    "start": "ts-node src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
     "nodemon": "^2.0.15",
     "pino": "^7.6.3",
     "pino-pretty": "^7.4.0",
+    "ts-node": "^10.4.0",
     "zod": "^3.11.6"
   },
   "devDependencies": {

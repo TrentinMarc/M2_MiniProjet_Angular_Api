@@ -5,7 +5,7 @@ import config from "../../config/config";
 
 
 const extractJWT = (req: Request, res: Response, next: NextFunction) => {
-    let token = req.headers.authorization;
+    const token = req.headers.authorization;
 
     if(token){
         jwt.verify(token, config.server.jwt_secret, (error, decoded) => {

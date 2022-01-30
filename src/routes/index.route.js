@@ -7,5 +7,4 @@ const assignmentRoutes = require('./assignment.route');
 
 router.use("/assignment", assignmentRoutes);
 
-
 module.exports = router;
