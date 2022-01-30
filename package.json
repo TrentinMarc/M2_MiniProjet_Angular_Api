@@ -4,13 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "prestart": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
-    "start": "ts-node src/server.ts",
-    "heroku-prebuild": "npm install --dev"
+    "start": "ts-node src/server.ts"
   },
   "repository": {
     "type": "git",
