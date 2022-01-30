@@ -11,7 +11,8 @@ const app = express()
 const allowedOrigins = ['*']
 
 const options: cors.CorsOptions = {
-    origin: allowedOrigins
+    origin: allowedOrigins,
+    methods: 'GET, POST, DELETE'
 }
 const NAMESPACE = "Server";
 app.use(express.json())
